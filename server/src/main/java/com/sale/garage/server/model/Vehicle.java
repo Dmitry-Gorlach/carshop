@@ -22,14 +22,13 @@ public class Vehicle {
     @NonNull
     private String model;
 
-    @NonNull
     @Column(name = "year_model")
     private int yearModel;
 
     @NonNull
     private Double price;
 
-    private boolean licensed;
+    private Boolean licensed;
 
     @NonNull
     @Column(name="date_added")

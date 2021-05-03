@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import VehicleService from "../services/VehicleService";
 
 class ListVehicleComponent extends Component {
     constructor(props) {
@@ -8,6 +9,11 @@ class ListVehicleComponent extends Component {
         }
     }
 
+    componentDidMount(){
+        VehicleService.getVehicles().then((response) =>{
+                this.setState({vehicles: response.data});
+            });
+    }
     render() {
         return (
             <div>
@@ -15,13 +21,15 @@ class ListVehicleComponent extends Component {
                 <div className="row">
                     <table className="table table-striped table-bordered">
                         <thead>
+                        <tr>
                         <th>Id</th>
                         <th>Make</th>
                         <th>Model</th>
                         <th>Year model</th>
                         <th>Price</th>
-                        <th>licensed</th>
+                        <th>Licensed</th>
                         <th>Date added</th>
+                        </tr>
                         </thead>
                         <tbody>
                         {
@@ -31,10 +39,10 @@ class ListVehicleComponent extends Component {
                                         <td> {vehicle.id}</td>
                                         <td> {vehicle.make}</td>
                                         <td> {vehicle.model}</td>
-                                        <td> {vehicle.year_model}</td>
+                                        <td> {vehicle.yearModel}</td>
                                         <td> {vehicle.price}</td>
-                                        <td> {vehicle.licensed}</td>
-                                        <td> {vehicle.date_added}</td>
+                                        <td> {vehicle.licensed.toString()}</td>
+                                        <td> {vehicle.dateAdded}</td>
                                     </tr>
                             )
                         }
