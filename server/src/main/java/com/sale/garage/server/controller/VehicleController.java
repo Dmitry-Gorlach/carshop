@@ -1,7 +1,7 @@
 package com.sale.garage.server.controller;
 
 import com.sale.garage.server.model.Vehicle;
-import com.sale.garage.server.repository.VehicleRepository;
+import com.sale.garage.server.service.VehicleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,11 +15,11 @@ import java.util.List;
 public class VehicleController {
 
     @Autowired
-    private VehicleRepository vehicleRepository;
+    private VehicleService vehicleService;
 
     @RequestMapping("/list")
     public List<Vehicle> getVehicles() {
-        return vehicleRepository.findAll();
+        return vehicleService.findAllSortingByDateAdded();
     }
 
 }

@@ -44,4 +44,17 @@ public class Vehicle {
 
     public Vehicle() {
     }
+
+    public Vehicle(Long id, @NonNull String make, @NonNull String model,
+                   int yearModel, @NonNull Double price, Boolean licensed,
+                   @NonNull LocalDate dateAdded, Warehouse warehouse) {
+        this.id = id;
+        this.make = make;
+        this.model = model;
+        this.yearModel = yearModel;
+        this.price = price;
+        this.licensed = licensed;
+        this.dateAdded = dateAdded;
+        this.warehouse = warehouse;
+    }
 }

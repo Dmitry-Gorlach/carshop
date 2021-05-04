@@ -4,6 +4,7 @@ import React from "react";
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
 import HeaderComponent from "./components/HeaderComponent";
 import FooterComponent from "./components/FooterComponent.";
+import ListWarehouseComponent from "./components/ListWarehouseComponent";
 
 function App() {
     return (
@@ -14,7 +15,11 @@ function App() {
                         <Switch> http://localhost:3000/vehicle/list
                             <Route path="/" component={ListVehicleComponent}></Route>
                             <Route path="/vehicle/list" component={ListVehicleComponent}></Route>
-                            <ListVehicleComponent/>
+
+                        </Switch>
+                        <Switch> http://localhost:3000/warehouse/list
+                            <Route path="/warehouse/list" component={ListWarehouseComponent}></Route>
+
                         </Switch>
                     </div>
                     <FooterComponent/>

@@ -35,4 +35,9 @@ public class Warehouse {
 
     public Warehouse() {
     }
+
+    public Warehouse(Long id, @NonNull String name) {
+        this.id = id;
+        this.name = name;
+    }
 }
