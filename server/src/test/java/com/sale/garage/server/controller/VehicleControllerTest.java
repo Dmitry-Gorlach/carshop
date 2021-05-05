@@ -1,6 +1,6 @@
 package com.sale.garage.server.controller;
 
-import com.sale.garage.server.model.Vehicle;
+import com.sale.garage.server.mapstruct.dtos.VehicleDto;
 import com.sale.garage.server.model.Warehouse;
 import com.sale.garage.server.service.VehicleService;
 import org.junit.Test;
@@ -39,12 +39,28 @@ public class VehicleControllerTest {
 
         Warehouse warehouse = new Warehouse(1L, "Warahouse GG");
         LocalDate date = LocalDate.parse("2020-01-08");
-        Vehicle vehicle = new Vehicle(1L,"Toyota", "Camry",
-                2019,29.12, true, date, warehouse);
-        Vehicle vehicleTwo = new Vehicle(1L,"Tesla", "S",
-                2019,29.12, true, date, warehouse);
 
-        List<Vehicle> allVehicles = Arrays.asList(vehicle, vehicleTwo);
+        VehicleDto vehicle = new VehicleDto();
+        vehicle.setId(1L);
+        vehicle.setMake("Toyota");
+        vehicle.setModel("Camry");
+        vehicle.setYearModel(2019);
+        vehicle.setPrice(29.12);
+        vehicle.setLicensed(true);
+        vehicle.setDateAdded(date);
+        vehicle.setWarehouse(warehouse);
+
+        VehicleDto vehicleTwo = new VehicleDto();
+        vehicleTwo.setId(2L);
+        vehicleTwo.setMake("Tesla");
+        vehicleTwo.setModel("S");
+        vehicleTwo.setYearModel(2019);
+        vehicleTwo.setPrice(29.52);
+        vehicleTwo.setLicensed(true);
+        vehicleTwo.setDateAdded(date);
+        vehicleTwo.setWarehouse(warehouse);
+
+        List<VehicleDto> allVehicles = Arrays.asList(vehicle, vehicleTwo);
 
         given(service.findAllSortingByDateAdded()).willReturn(allVehicles);
 

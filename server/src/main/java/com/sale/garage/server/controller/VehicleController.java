@@ -1,11 +1,10 @@
 package com.sale.garage.server.controller;
 
-import com.sale.garage.server.model.Vehicle;
+import com.sale.garage.server.mapstruct.dtos.VehicleDto;
 import com.sale.garage.server.service.VehicleService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -14,12 +13,24 @@ import java.util.List;
 @RequestMapping("/api/vehicle")
 public class VehicleController {
 
-    @Autowired
     private VehicleService vehicleService;
 
+    public VehicleController(VehicleService vehicleService) {
+        this.vehicleService = vehicleService;
+    }
+
     @RequestMapping("/list")
-    public List<Vehicle> getVehicles() {
-        return vehicleService.findAllSortingByDateAdded();
+    public ResponseEntity<?> getVehicles() {
+        final List<VehicleDto> vehicleDtos = vehicleService.findAllSortingByDateAdded();
+        return new ResponseEntity<>(vehicleDtos, HttpStatus.OK);
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<?> getVehicleById(@PathVariable final Long id) {
+        VehicleDto vehicleDto = vehicleService.findById(id);
+        return vehicleDto == null ?
+                new ResponseEntity<>(HttpStatus.NOT_FOUND) :
+                ResponseEntity.ok().body(vehicleDto);
     }
 
 }

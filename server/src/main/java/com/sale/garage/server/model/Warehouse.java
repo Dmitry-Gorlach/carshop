@@ -23,6 +23,7 @@ public class Warehouse {
      */
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "location_id")
+    @NonNull
     private Location location;
 
     /**
@@ -30,7 +31,6 @@ public class Warehouse {
      */
 
     @OneToMany (mappedBy="warehouse", fetch = FetchType.EAGER)
-
     private List<Vehicle> vehicles;
 
     public Warehouse() {

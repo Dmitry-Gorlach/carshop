@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import WarehouseService from "../services/WarehouseService";
+import ListVehicleComponent from "./ListVehicleComponent";
 
 class ListWarehouseComponent extends Component {
     constructor(props) {
@@ -8,7 +9,10 @@ class ListWarehouseComponent extends Component {
             warehouses: [
                 {
                     id: "",
-                    location: "",
+                    location: {
+                        lat: '',
+                        long: ''
+                    },
                     vehicles:[]
                 }
             ]
@@ -31,6 +35,7 @@ class ListWarehouseComponent extends Component {
                             <th>Id</th>
                             <th>Name</th>
                             <th>Location</th>
+                            <th>Vehicles</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -40,7 +45,11 @@ class ListWarehouseComponent extends Component {
                                     <tr key={warehouse.id}>
                                         <td> {warehouse.id}</td>
                                         <td> {warehouse.name}</td>
-                                        <td> {warehouse.location.id}</td>
+                                        <td>
+                                            <li>{warehouse.location.lat}</li>
+                                            <li>{warehouse.location.long}</li>
+                                        </td>
+                                        <td> <ListVehicleComponent/> </td>
                                     </tr>
                             )
                         }

@@ -39,10 +39,10 @@ class ListVehicleComponent extends Component {
                                         <td> {vehicle.id}</td>
                                         <td> {vehicle.make}</td>
                                         <td> {vehicle.model}</td>
-                                        <td> {vehicle.yearModel}</td>
+                                        <td> {vehicle.year_model}</td>
                                         <td> {vehicle.price}</td>
                                         <td> {vehicle.licensed.toString()}</td>
-                                        <td> {vehicle.dateAdded}</td>
+                                        <td> {vehicle.date_added}</td>
                                     </tr>
                             )
                         }

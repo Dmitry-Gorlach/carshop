@@ -13,11 +13,11 @@ function App() {
                     <HeaderComponent/>
                     <div className="container">
                         <Switch> http://localhost:3000/vehicle/list
-                            <Route path="/" component={ListVehicleComponent}></Route>
                             <Route path="/vehicle/list" component={ListVehicleComponent}></Route>
 
                         </Switch>
                         <Switch> http://localhost:3000/warehouse/list
+                            <Route path="/warehouse" component={ListWarehouseComponent}></Route>
                             <Route path="/warehouse/list" component={ListWarehouseComponent}></Route>
 
                         </Switch>
